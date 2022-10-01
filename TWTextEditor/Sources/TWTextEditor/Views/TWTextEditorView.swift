@@ -43,7 +43,7 @@ public class TWTextEditorView: UIView {
     
     
     func setupTextEditor() {
-        self.textView.textColor = twTextColor
+        self.textView.textColor = self.twTextColor
         self.twTextFont = UIFont.twFontReqularWithSize(size: 14)
         self.view.layer.borderWidth = 2.0
         self.view.layer.borderColor = UIColor.black.cgColor
