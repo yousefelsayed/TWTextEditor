@@ -11,7 +11,7 @@ public class TWTextEditorView: UIView {
     
     
     @IBOutlet var view: UIView!
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak public var textView: UITextView!
     
     
     var maximumNumberOfLines: Int = 0 {
