@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TWTextEditorView: UIView {
+public class TWTextEditorView: UIView {
     
     
     @IBOutlet var view: UIView!
@@ -35,7 +35,7 @@ class TWTextEditorView: UIView {
         self.view.fillSuperview()
     }
     
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         self.setupTextEditor()
     }
