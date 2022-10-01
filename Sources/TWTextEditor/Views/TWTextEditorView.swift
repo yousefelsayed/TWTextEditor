@@ -26,7 +26,7 @@ public class TWTextEditorView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        UINib(nibName: String(describing: TWTextEditorView.self), bundle: Bundle(for: TWTextEditorView.self)).instantiate(withOwner: self, options: nil)
+        UINib(nibName: String(describing: TWTextEditorView.self), bundle: Bundle.module).instantiate(withOwner: self, options: nil)
         self.attach(view: self.view, toContainer: self)
     }
     
