@@ -42,15 +42,15 @@ extension UIFont {
     }
 }
 extension UIFont {
-    static func twFontReqularWithSize(size: CGFloat) -> UIFont {
+    public static func twFontReqularWithSize(size: CGFloat) -> UIFont {
         return UIFont(name: "DINNextLTArabic-Regular", size: size)!
     }
     
-    static func twFontMediumWithSize(size: CGFloat) -> UIFont {
+    public static func twFontMediumWithSize(size: CGFloat) -> UIFont {
         return UIFont(name: "DINNextLTArabic-Medium", size: size)!
     }
     
-    static func twFontBoldWithSize(size: CGFloat) -> UIFont {
+    public  static func twFontBoldWithSize(size: CGFloat) -> UIFont {
         return UIFont(name: "DINNextLTArabic-Bold", size: size)!
     }
 }
