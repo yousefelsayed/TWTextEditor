@@ -96,3 +96,50 @@ extension NSObject {
     }
 }
 
+
+extension UIColor {
+  static func hexStringToUIColor (hex:String) -> UIColor {
+        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+
+        if (cString.hasPrefix("#")) {
+            cString.remove(at: cString.startIndex)
+        }
+
+        if ((cString.count) != 6) {
+            return UIColor.gray
+        }
+
+        var rgbValue:UInt64 = 0
+        Scanner(string: cString).scanHexInt64(&rgbValue)
+
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
+}
+
+extension CALayer {
+  func applyFigmaShadow(
+    color: UIColor = UIColor.hexStringToUIColor(hex: "061A40"),
+    alpha: Float = 0.04,
+    x: CGFloat = 0,
+    y: CGFloat = 0,
+    radius: CGFloat = 24)
+  {
+    masksToBounds = false
+    shadowColor = color.cgColor
+    shadowOpacity = alpha
+    shadowOffset = CGSize(width: x, height: y)
+    shadowRadius = radius
+    if radius == 0 {
+      shadowPath = nil
+    } else {
+      let dx = -radius
+      let rect = bounds.insetBy(dx: dx, dy: dx)
+      shadowPath = UIBezierPath(rect: rect).cgPath
+    }
+  }
+}
