@@ -25,9 +25,9 @@ class TitleLabelWithTithSize14: UILabel {
     }
 }
 
-class TWPrimaryButton: UIButton {
+public class TWPrimaryButton: UIButton {
     
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         self.setTitleColor(.white, for: .normal)
         self.titleLabel?.font = .twFontBoldWithSize(size: 14)
