@@ -19,7 +19,7 @@ public class TWTextEditorView: UIView {
     
     public var placeholderLabel : UILabel!
     
-    public var typedCharachtersCount: Int! { return TWTextEditorView.lengthOf(tweet: self.text) }
+    public var typedCharachtersCount: Int! { return twTextEditor?.lengthOf(tweet: self.text) }
     
     public var remainingCharachtersCount: Int! { return (self.maxCountOfCharchters - typedCharachtersCount) }
     
@@ -29,10 +29,13 @@ public class TWTextEditorView: UIView {
     
     weak public  var viewDelegate: TWTextEditorViewDelegate?
     
+    var twTextEditor: TWTextEditor?
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         UINib(nibName: String(describing: TWTextEditorView.self), bundle: Bundle.module).instantiate(withOwner: self, options: nil)
         self.attach(view: self.view, toContainer: self)
+        self.twTextEditor = TWTextEditor()
     }
     
     fileprivate func attach(view: UIView, toContainer container: UIView) {
@@ -85,39 +88,6 @@ public class TWTextEditorView: UIView {
     public func copyCurrentText() {
         UIPasteboard.general.string = self.text
     }
-    
-    //MARK:- Calculate length of given tweet
-    static public func lengthOf(tweet: String) -> Int {
-        
-        let (cleanText, urlLength) = cleanAndCountURLs(text: tweet)
-        
-        var weightedLength = urlLength
-        
-        for char in cleanText {
-            if char.isEmoji == true {
-                weightedLength += 2 //2 is the count of characters for any emoji according to twitter docs
-                continue
-            } else {
-                weightedLength += 1
-            }
-        }
-        
-        return weightedLength
-    }
-    
-    static public  func cleanAndCountURLs(text: String) -> (String, Int) {
-        var output = text
-        var lenght = 0
-        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-        let matches = detector.matches(in: text, options: [], range: NSRange(location: 0, length: text.utf16.count))
-        
-        matches.forEach {
-            output = (text as NSString).replacingCharacters(in: $0.range, with: "")
-            lenght += 23 //23 is the count of characters for any url according to twitter docs
-        }
-        return (output, lenght)
-    }
-    
     
 }
 
