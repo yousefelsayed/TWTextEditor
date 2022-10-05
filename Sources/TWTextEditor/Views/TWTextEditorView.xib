@@ -22,7 +22,6 @@
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gLP-1T-f1M">
                     <rect key="frame" x="5" y="5" width="361" height="339"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <accessibility key="accessibilityConfiguration" identifier="twText"/>
                     <color key="textColor" systemColor="labelColor"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
