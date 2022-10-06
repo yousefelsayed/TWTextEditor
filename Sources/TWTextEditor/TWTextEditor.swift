@@ -8,14 +8,7 @@
 import Foundation
 
 
-public protocol TWTextEditorProtocol {
-    
-    func lengthOf(tweet: String) -> Int
-    func cleanAndCountURLs(text: String) -> (String, Int)
-    
-}
-
-class TWTextEditor: TWTextEditorProtocol {
+class TWTextEditor {
     
     let weightOfURL: Int = 23
     let weightOfEmoji: Int = 2
